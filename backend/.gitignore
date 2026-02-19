@@ -26,6 +26,7 @@ Thumbs.db
 
 # Environment variables and credentials
 *.env
+!.env.example
 *.json
 *.yml
 config/
