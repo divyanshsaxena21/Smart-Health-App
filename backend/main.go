@@ -33,10 +33,11 @@ func main() {
 			"https://cal-qulate.vercel.app",
 			"https://calqulate.ayushsharma.site",
 			"https://smart-health-app-iota.vercel.app",
-			"https://smart-health-app-iota.vercel.app/process-image",
 		},
-		AllowedMethods: []string{"GET", "POST", "OPTIONS"},
-		AllowedHeaders: []string{"Content-Type"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Content-Type", "Authorization", "X-Requested-With"},
+		AllowCredentials: true,
+		Debug:            true,
 	})
 
 	handler := corsHandler.Handler(mux)
