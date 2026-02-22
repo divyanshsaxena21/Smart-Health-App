@@ -33,6 +33,8 @@ func main() {
 			"https://cal-qulate.vercel.app",
 			"https://calqulate.ayushsharma.site",
 			"https://smart-health-app-iota.vercel.app",
+			"https://smart-health-app-cci2.vercel.app/",
+			
 		},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization", "X-Requested-With"},
