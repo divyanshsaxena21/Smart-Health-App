@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"smart-health-app/handlers"
 
@@ -26,15 +27,25 @@ func main() {
 	mux.HandleFunc("/process-image", handlers.ProcessImage)
 	mux.HandleFunc("/health", healthCheck)
 
-	// Configure CORS
+	// Configure CORS: allow localhost, any vercel.app subdomain, and any onrender.com subdomain
 	corsHandler := cors.New(cors.Options{
-		AllowedOrigins: []string{
-			"http://localhost:3000",
-			"https://cal-qulate.vercel.app",
-			"https://calqulate.ayushsharma.site",
-			"https://smart-health-app-iota.vercel.app",
-			"https://smart-health-app-cci2.vercel.app/",
-			
+		AllowOriginFunc: func(origin string) bool {
+			if origin == "" {
+				return false
+			}
+			// Allow local development
+			if strings.HasPrefix(origin, "http://localhost") || strings.HasPrefix(origin, "http://127.0.0.1") || strings.HasPrefix(origin, "https://localhost") {
+				return true
+			}
+			// Allow any Vercel subdomain
+			if strings.HasSuffix(origin, ".vercel.app") {
+				return true
+			}
+			// Allow Render/app hostname subdomains
+			if strings.HasSuffix(origin, ".onrender.com") {
+				return true
+			}
+			return false
 		},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization", "X-Requested-With"},

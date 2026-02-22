@@ -1,0 +1,67 @@
+# Root .gitignore for Smart-Health-App
+
+# Node / frontend
+node_modules/
+.next/
+out/
+dist/
+build/
+.cache/
+turbo/
+pnpm-lock.yaml
+
+# Go
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Environment and secrets
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+!.env.example
+google-cloud-service-account.json
+google-credentials.json
+google-credentials-*.json
+
+# Temporary Google credentials written by the app
+/tmp/
+google-credentials.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.iml
+
+# TypeScript
+*.tsbuildinfo
+
+# Test output / coverage
+coverage/
+coverage.out
+
+# Build artifacts
+*.tar.gz
+*.zip
+
+# Optional: generated files
+__generated__/
